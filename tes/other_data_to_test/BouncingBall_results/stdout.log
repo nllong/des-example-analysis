@@ -1,0 +1,29 @@
+22-Jul-22 20:33:15 - INFO: args: Namespace(action='run', compiler='optimica', model='BouncingBall.fmu', modelica_path='.')
+22-Jul-22 20:33:15 - WARNING: The attribute 'enable_logging' is deprecated. Please use 'log_level' instead. Setting 'log_level' to INFO...
+22-Jul-22 20:33:15 - WARNING: The attribute 'enable_logging' is deprecated. Please use 'log_level' instead. Setting 'log_level' to INFO...
+22-Jul-22 20:33:15 - INFO: Running FMU Model BouncingBall.fmu with start: 0 stop: 300 step: 300
+22-Jul-22 20:33:16 - INFO: Spawn result: <pyfmi.fmi_algorithm_drivers.FMIResult object at 0x7fad86981850>
+Final Run Statistics: --- 
+
+ Number of steps                                 : 859
+ Number of function evaluations                  : 1108
+ Number of Jacobian evaluations                  : 61
+ Number of function eval. due to Jacobian eval.  : 122
+ Number of error test failures                   : 21
+ Number of nonlinear iterations                  : 949
+ Number of nonlinear convergence failures        : 0
+ Number of state function evaluations            : 1364
+ Number of state events                          : 52
+
+Solver options:
+
+ Solver                   : CVode
+ Linear multistep method  : BDF
+ Nonlinear solver         : Newton
+ Linear solver type       : DENSE
+ Maximal order            : 5
+ Tolerances (absolute)    : 1e-08
+ Tolerances (relative)    : 1e-06
+
+Simulation interval    : 0.0 - 300.0 seconds.
+Elapsed simulation time: 0.7562270899943542 seconds.

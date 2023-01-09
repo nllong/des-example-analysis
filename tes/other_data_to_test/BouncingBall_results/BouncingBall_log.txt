@@ -1,0 +1,4 @@
+FMIL: module = FMILIB, log level = 4: Loading 'linux64' binary with 'default' platform types
+FMIL: module = Model, log level = 4: [INFO][FMU status:OK] <JMIRuntime><value name="build_date">"Nov 22 2019"</value> <value name="build_time">"21:41:28"</value></JMIRuntime>
+FMIL: module = Model, log level = 4: [INFO][FMU status:OK] <JMIRuntime>Using mathematical functions with domain checks.</JMIRuntime>
+FMIL: module = FMI2XML, log level = 3: fmi2_xml_get_default_experiment_start: returning default value, since no attribute was defined in modelDescription

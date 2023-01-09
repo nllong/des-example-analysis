@@ -1,0 +1,8 @@
+# These files can get very large
+*.mat
+*.zip
+
+.ipynb_checkpoints
+.pytest_cache
+
+tmp

@@ -1,0 +1,117 @@
+24-Jul-22 20:34:03 - INFO: args: Namespace(action='compile_and_run', compiler='optimica', model='StratifiedUnloadAtMinimumTemperature.mo', modelica_path='.')
+24-Jul-22 20:34:03 - INFO: Compiling StratifiedUnloadAtMinimumTemperature
+24-Jul-22 20:34:03 - INFO: Modelica path is .
+24-Jul-22 20:34:03 - INFO: MBL path is /mnt/Users/nlong/working/urban-analysis/run_tes/models/tes/sim_1 /mnt /mnt/Users/nlong/working/urban-analysis/modelica-buildings/Buildings
+24-Jul-22 20:34:03 - INFO: Calling spawn compile with 'spawn modelica --create-fmu StratifiedUnloadAtMinimumTemperature --modelica-path . /mnt/Users/nlong/working/urban-analysis/run_tes/models/tes/sim_1 /mnt /mnt/Users/nlong/working/urban-analysis/modelica-buildings/Buildings --fmu-type ME --optimica'
+Compiling Model with Optimica
+Parse Model
+Instantiate Model
+Trouble during Optimica Compiling
+23 errors and 2 warnings found:
+
+Error at line 6, column 22, in model 'StratifiedUnloadAtMinimumTemperature':
+    Cannot find class declaration for SIunits
+
+Error at line 8, column 22, in model 'StratifiedUnloadAtMinimumTemperature':
+    Cannot find class declaration for SIunits
+
+Error at line 20, column 10, in model 'StratifiedUnloadAtMinimumTemperature':
+    Cannot find declaration for nSeg
+
+Error at line 20, column 10, in model 'StratifiedUnloadAtMinimumTemperature':
+    Could not evaluate binding expression for structural parameter 'tan.nSeg': 'nSeg'
+
+Error at line 5, column 17, in block 'Modelica.Blocks.Interfaces.MISO',
+In component tan.sum1:
+    Could not evaluate array size expression: nin
+
+Error at line 3, column 22, in block 'Modelica.Blocks.Math.Sum',
+In component tan.sum1:
+    Could not evaluate array size expression: nin
+
+Error at line 9, column 45, in block 'Modelica.Blocks.Routing.Multiplex3',
+In component tan.mul:
+    Could not evaluate array size expression: n2
+
+Error at line 15, column 45, in block 'Modelica.Blocks.Routing.Multiplex3',
+In component tan.mul:
+    Could not evaluate array size expression: n1 + n2 + n3
+
+Error at line 3, column 32, in model 'Modelica.Thermal.HeatTransfer.Components.ThermalCollector',
+In component tan.theCol:
+    Could not evaluate array size expression: m
+
+Error at line 11, column 55, in model 'Buildings.Fluid.Storage.BaseClasses.Buoyancy',
+In component tan.buo:
+    Could not evaluate array size expression: nSeg
+
+Error at line 15, column 34, in model 'Buildings.Fluid.Storage.BaseClasses.Buoyancy',
+In component tan.buo:
+    Could not evaluate array size expression: nSeg - 1
+
+Error at line 27, column 46, in model 'Buildings.Fluid.Storage.BaseClasses.Buoyancy',
+In component tan.buo:
+    Could not evaluate array size expression: nSeg - 1
+
+Error at line 27, column 54, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Error at line 48, column 55, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Error at line 64, column 46, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Error at line 97, column 16, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate binding expression for structural parameter 'tan.buo.nSeg': 'nSeg'
+
+Error at line 100, column 61, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg - 1
+
+Error at line 103, column 61, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Error at line 120, column 66, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Error at line 126, column 8, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate binding expression for structural parameter 'tan.mul.n2': 'nSeg'
+
+Error at line 129, column 37, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate binding expression for structural parameter 'tan.sum1.nin': 'nSeg + 2'
+
+Error at line 132, column 70, in model 'Buildings.Fluid.Storage.BaseClasses.PartialStratified',
+In component tan:
+    Could not evaluate binding expression for structural parameter 'tan.theCol.m': 'nSeg'
+
+Error at line 4, column 51, in model 'Buildings.Fluid.Storage.Stratified',
+In component tan:
+    Could not evaluate array size expression: nSeg
+
+Warning at line 23, column 3, in model 'Buildings.Fluid.Actuators.BaseClasses.ValveParameters',
+In components:
+    valBot
+    valMed
+    valTop
+    The component m_flow_nominal is declared multiple times and can not be verified to be identical to other declaration(s) with the same name.
+
+Warning at line 49, column 12, in model 'Buildings.Fluid.Sources.BaseClasses.PartialSource',
+In components:
+    loa
+    masSou
+    The cardinality() function-like operator is deprecated, and will be removed in a future version of Modelica
+
+****
+Compile C Code
+Spawn encountered an error:
+"Error parsing xml document located at : /mnt/shared/sim_1/StratifiedUnloadAtMinimumTemperature/modelDescription.xml"
+FMU model does not exist: StratifiedUnloadAtMinimumTemperature.fmu
