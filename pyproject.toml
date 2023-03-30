@@ -9,12 +9,12 @@ python = ">=3.8, <3.11"
 jupyterlab = "^3.0"
 jupytext = "^1.13"
 
-geojson-modelica-translator = { path = "../geojson-modelica-translator/", develop = true }
-#geojson-modelica-translator = "^0.4.0"
+geojson-modelica-translator = "^0.4.1"
+# geojson-modelica-translator = { path = "../geojson-modelica-translator/", develop = true }
 #geojson-modelica-translator = { git = "https://github.com/urbanopt/geojson-modelica-translator.git", branch = "develop"}
 
-# modelica-builder = {version = "^0.2.2", allow-prereleases = true }
-modelica-builder = { path = "../modelica-builder/", develop = true }
+modelica-builder = {version = "^0.2.3", allow-prereleases = true }
+# modelica-builder = { path = "../modelica-builder/", develop = true }
 
 buildingspy = "4.0.0"
 
