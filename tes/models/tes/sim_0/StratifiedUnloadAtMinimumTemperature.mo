@@ -16,7 +16,7 @@ model StratifiedUnloadAtMinimumTemperature
     m_flow_nominal=m_flow_nominal,
     VTan=VTan,
     hTan=2,
-    dIns=0.75,
+    dIns=0.5,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     nSeg=5,
     T_start=353.15) "Hot water storage tank"

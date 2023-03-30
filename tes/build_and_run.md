@@ -6,6 +6,8 @@ from modelica_builder.model import Model
 from geojson_modelica_translator.modelica.modelica_runner import ModelicaRunner
 from pathlib import Path
 
+# Set your MODELICAPATH env var correctly to point to your local copy of the MBL.
+
 # list env settings
 print(os.environ['MODELICAPATH'])
 
@@ -30,7 +32,7 @@ if not OUTPUT_WORKDIR.exists():
 
 ```
 
-# Build the example model
+# Use GMT's ModelicaRunner to compile the example model
 
 ```python
 model_path = WORKDIR / 'models' / 'tes'
@@ -39,6 +41,9 @@ model_file = model_path / 'StratifiedUnloadAtMinimumTemperature.mo'
 
 mr = ModelicaRunner()
 print(f"running in {model_path}")
+# This model should compile without issue using JModelica, which is the default within the ModelicaRunner library.
+# DON'T expect this command to work (yet) for complicated models. A new docker container with OpenModelica is 
+# being created to support this workflow.
 success = mr.compile_in_docker(model_file, save_path=model_path)
 print(f"FMU build success is {success}")
 #success, results_path = mr.run_in_docker(model_path, run_path=model_path.parent)
@@ -53,49 +58,50 @@ baseline_path.mkdir(parents=True, exist_ok=True)
 baseline_file = baseline_path / model_file.name
 shutil.copyfile(model_file, baseline_file )
 
-success, _ = mr.run_in_docker(baseline_file, run_path=baseline_path)
-print(f"Build and run success is {success}")
+# Run no longer works--this is a WIP and will be fixed shortly.
+# success, _ = mr.run_in_docker(baseline_file, run_path=baseline_path)
+# print(f"Build and run success is {success}")
 ```
 
 ## Create some perturbations
 
 
 ```python
-new_perturb_path = model_path / 'sim_1'
-new_perturb_path.mkdir(parents=True, exist_ok=True)
+perturb_values = [ 0.5, 0.75, 1.0, 1.25, ]
 
-mofile = Model(model_file)
-# testing... 
-# mofile.add_parameter(
-#                 'Integer', 'nPorts',
-#                 assigned_value=27,
-#                 string_comment='Number of fluid ports.',
-#                 annotations=['connectorSizing=true']
-#             )
+for index, perturb_value in enumerate(perturb_values):
+    new_perturb_path = model_path / f'sim_{index}'
+    new_perturb_path.mkdir(parents=True, exist_ok=True)
 
-# First remove the nSeg component
-mofile.remove_component('Integer', 'nSeg')
+    mofile = Model(model_file)
 
-# Second update the segment in the stratified component
-mofile.update_component_modifications(
-                    'Buildings.Fluid.Storage.Stratified',
-                    'tan',
-                    {
-                        # 'nSeg': "this is great",
-                        'dIns': 1.2,
-                    }
-                )
+    # remove the nSeg component/constant so that we can just set it 
+    # in the component opject.
+    mofile.remove_component('Integer', 'nSeg')
 
-new_perturb_file = new_perturb_path / model_file.name
-mofile.save_as(new_perturb_file)
+    # Second update the segment in the stratified component
+    mofile.update_component_modifications(
+        'Buildings.Fluid.Storage.Stratified',
+        'tan',
+        {
+            'nSeg': 5,
+            'dIns': perturb_value,
+        }
+    )
 
+    new_perturb_file = new_perturb_path / model_file.name
+    mofile.save_as(new_perturb_file)
 ```
 
 ```python
-# try running the new seg model
-
-success, _ = mr.run_in_docker(new_perturb_file, run_path=new_perturb_path)
-print(f"Build and run success is {success}")
+# run the perturbations, in series for now
+for index, perturb_value in enumerate(perturb_values):
+    file_to_run = model_path / f'sim_{index}' / model_file.name
+    print(f"File to run is {file_to_run}")
+    # Run no longer works--this is a WIP and will be fixed shortly.
+    # success, _ = mr.run_in_docker(new_perturb_file, run_path=new_perturb_path)
+    # print(f"Build and run success is {success}")
+    
 ```
 
 ## Process single result
