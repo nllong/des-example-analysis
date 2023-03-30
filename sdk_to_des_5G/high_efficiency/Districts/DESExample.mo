@@ -11,9 +11,9 @@ package DESExample
         dp_length_nominal=250,
         epsPla=0.935));
     parameter String filNam[nBui]={
-      "modelica://baseline/Resources/B2.mos",
-      "modelica://baseline/Resources/B6.mos",
-      "modelica://baseline/Resources/B11.mos"}
+      "modelica://high_efficiency/Resources/B2.mos",
+      "modelica://high_efficiency/Resources/B6.mos",
+      "modelica://high_efficiency/Resources/B11.mos"}
       "Library paths of the files with thermal loads as time series";
     Modelica.Blocks.Sources.Constant masFloMaiPum(
       k=datDes.mPumDis_flow_nominal)
